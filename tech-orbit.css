@@ -1,0 +1,187 @@
+/* Estilos para el sistema de órbitas tecnológicas */
+
+.orbit-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    pointer-events: none; /* Para que no interfiera con los clics */
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(56, 182, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbit-rotation linear infinite;
+}
+
+.tech-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--dark-light);
+    box-shadow: 0 0 15px rgba(56, 182, 255, 0.5);
+    transform-origin: center;
+    transition: all 0.3s ease;
+    pointer-events: auto; /* Para permitir interacciones */
+    animation: tech-bob 3s ease-in-out infinite;
+}
+
+.tech-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 3px rgba(56, 182, 255, 0.8));
+}
+
+.tech-icon i {
+    font-size: 24px;
+    filter: drop-shadow(0 0 3px rgba(56, 182, 255, 0.8));
+}
+
+/* Animación de órbita */
+@keyframes orbit-rotation {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Animación de flotación para los íconos */
+@keyframes tech-bob {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Estilos para órbitas individuales */
+.orbit-1 {
+    width: 460px;
+    height: 260px;
+    animation-duration: 20s;
+    animation-direction: normal;
+}
+
+.orbit-2 {
+    width: 600px;
+    height: 340px;
+    animation-duration: 30s;
+    animation-direction: reverse;
+}
+
+.orbit-3 {
+    width: 740px;
+    height: 420px;
+    animation-duration: 40s;
+    animation-direction: normal;
+}
+
+/* Animación al pasar el mouse por encima */
+.tech-icon:hover {
+    transform: scale(1.3);
+    background-color: var(--primary);
+    z-index: 10;
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* Tooltip para mostrar el nombre de la tecnología */
+.tech-tooltip {
+    position: absolute;
+    background-color: var(--dark-light);
+    color: var(--text);
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tech-icon:hover .tech-tooltip {
+    opacity: 1;
+}
+
+/* Optimizaciones para móviles */
+@media (max-width: 768px) {
+    .orbit-container {
+        display: none !important; /* Usar !important para forzar la ocultación */
+    }
+    
+    .orbit, .tech-icon {
+        display: none !important;
+    }
+}
+
+/* Versión móvil alternativa - burbujas flotantes */
+.floating-tech-container {
+    display: none; /* Oculto por defecto, visible solo en móviles */
+}
+
+@media (max-width: 768px) {
+    .floating-tech-container {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -1;
+        pointer-events: none;
+    }
+    
+    .floating-tech {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--dark-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(56, 182, 255, 0.3);
+        animation: float-around 10s infinite linear;
+    }
+    
+    .floating-tech i {
+        font-size: 20px;
+        color: var(--primary);
+    }
+    
+    @keyframes float-around {
+        0% {
+            transform: translate(0, 0);
+        }
+        25% {
+            transform: translate(50px, 20px);
+        }
+        50% {
+            transform: translate(0, 50px);
+        }
+        75% {
+            transform: translate(-50px, 20px);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+}
