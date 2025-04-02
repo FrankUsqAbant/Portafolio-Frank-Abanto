@@ -53,9 +53,8 @@ window.addEventListener('scroll', () => {
 
 // Typing effect
 const titles = [
-    "Desarrollador Web",
-    "Ingeniero de Software", 
-    "Diseñador UI/UX"
+    "Desarrollador Web"
+    
 ];
 
 let titleIndex = 0;
