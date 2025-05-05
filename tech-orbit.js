@@ -1,24 +1,19 @@
-// Modifica tu archivo tech-orbit.js para asegurar que el sistema orbital se desactive en móviles
-
-// Sistema de órbitas tecnológicas
+// Sistema de órbitas tecnológicas mejorado
 document.addEventListener('DOMContentLoaded', function() {
-    // Detección de dispositivos móviles - versión mejorada
+    // Detección de dispositivos móviles
     const isMobileDevice = function() {
         // Comprobación por ancho de pantalla
         const isMobileWidth = window.innerWidth <= 768;
         
-        // Comprobación por user agent (respaldo)
+        // Comprobación por user agent
         const isMobileAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
-        // Comprobación por características táctiles (otra forma de respaldo)
+        // Comprobación por características táctiles
         const hasTouchScreen = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
         
-        // Consideramos que es móvil si cumple el criterio de ancho O
-        // es detectado como dispositivo móvil por user agent Y tiene pantalla táctil
         return isMobileWidth || (isMobileAgent && hasTouchScreen);
     };
     
-    // Verificación mejorada
     const isMobile = isMobileDevice();
     console.log("¿Dispositivo móvil detectado?", isMobile);
     
@@ -27,8 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setupOrbitSystem();
     } else {
         console.log("Dispositivo móvil detectado. Sistema orbital desactivado.");
-        // No hacemos nada en móvil, o si quieres, puedes activar una versión alternativa:
-        // setupMobileFloatingTech();
     }
 });
 
@@ -44,20 +37,20 @@ function setupOrbitSystem() {
     // Crear el contenedor de órbitas
     const orbitContainer = document.createElement('div');
     orbitContainer.className = 'orbit-container';
-    orbitContainer.id = 'orbit-container'; // Añadir ID para facilitar su eliminación si es necesario
+    orbitContainer.id = 'orbit-container';
     heroImage.appendChild(orbitContainer);
     
-    // Tecnologías a mostrar (iconos de Font Awesome o imágenes)
+    // Tecnologías a mostrar - actualizado para incluir Node.js
     const technologies = [
         { name: 'HTML', icon: 'fab fa-html5', color: '#E34F26' },
         { name: 'CSS', icon: 'fab fa-css3-alt', color: '#1572B6' },
         { name: 'JavaScript', icon: 'fab fa-js', color: '#F7DF1E' },
+        { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933' },
         { name: 'Bootstrap', icon: 'fab fa-bootstrap', color: '#7952B3' },
         { name: 'MySQL', icon: 'fas fa-database', color: '#00758F' },
+        { name: 'Angular', icon: 'fab fa-angular', color: '#DD0031' },
         { name: 'Git', icon: 'fab fa-git-alt', color: '#F05032' },
-        { name: 'React', icon: 'fab fa-react', color: '#61DAFB' },
-        { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933' },
-        { name: 'PHP', icon: 'fab fa-php', color: '#777BB4' },
+        { name: 'Java', icon: 'fab fa-java', color: '#007396' },
         { name: 'CodeIgniter', type: 'img', src: 'assets/codeneiter.png' }
     ];
     
@@ -70,13 +63,22 @@ function setupOrbitSystem() {
         orbit.className = `orbit orbit-${i+1}`;
         orbitContainer.appendChild(orbit);
         
-        // Número de tecnologías en esta órbita
-        const techPerOrbit = i === 0 ? 3 : i === 1 ? 3 : 4;
+        // Número de tecnologías en esta órbita - ajustado para 10 tecnologías
+        const techsPerOrbit = [3, 4, 3]; // Distribuir 10 tecnologías en 3 órbitas
+        const techPerOrbit = techsPerOrbit[i];
         
         // Distribuir las tecnologías en esta órbita
         for (let j = 0; j < techPerOrbit; j++) {
-            // Índice para obtener la tecnología
-            const techIndex = (i * 3 + j) % technologies.length;
+            // Calcular el índice para obtener la tecnología
+            let techIndex;
+            if (i === 0) {
+                techIndex = j;
+            } else if (i === 1) {
+                techIndex = 3 + j;
+            } else {
+                techIndex = 7 + j;
+            }
+            
             const tech = technologies[techIndex];
             
             // Crear el icono de tecnología
@@ -124,7 +126,6 @@ function setupOrbitSystem() {
             orbit.appendChild(techIcon);
             
             // Contrarrestar la rotación de la órbita para mantener el icono derecho
-            // (rotación inversa a la animación de la órbita)
             const orbitDuration = 20 + i * 10; // 20s, 30s, 40s
             const direction = i % 2 === 0 ? 1 : -1; // normal o reverse
             

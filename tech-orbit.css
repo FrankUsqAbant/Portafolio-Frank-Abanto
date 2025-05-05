@@ -7,14 +7,14 @@
     top: 0;
     left: 0;
     transform-style: preserve-3d;
-    pointer-events: none; /* Para que no interfiera con los clics */
+    pointer-events: none;
 }
 
 .orbit {
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 1px solid rgba(56, 182, 255, 0.2);
+    border: 2px solid rgba(56, 182, 255, 0.3);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: orbit-rotation linear infinite;
@@ -25,27 +25,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: var(--dark-light);
-    box-shadow: 0 0 15px rgba(56, 182, 255, 0.5);
+    box-shadow: 0 0 20px rgba(56, 182, 255, 0.7);
     transform-origin: center;
     transition: all 0.3s ease;
-    pointer-events: auto; /* Para permitir interacciones */
+    pointer-events: auto;
     animation: tech-bob 3s ease-in-out infinite;
+    z-index: 10;
 }
 
 .tech-icon img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    filter: drop-shadow(0 0 3px rgba(56, 182, 255, 0.8));
+    filter: drop-shadow(0 0 5px rgba(56, 182, 255, 0.8));
 }
 
 .tech-icon i {
-    font-size: 24px;
-    filter: drop-shadow(0 0 3px rgba(56, 182, 255, 0.8));
+    font-size: 32px;
+    filter: drop-shadow(0 0 5px rgba(56, 182, 255, 0.8));
 }
 
 /* Animación de órbita */
@@ -64,38 +65,38 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
     }
 }
 
 /* Estilos para órbitas individuales */
 .orbit-1 {
-    width: 460px;
-    height: 260px;
-    animation-duration: 20s;
+    width: 500px;
+    height: 300px;
+    animation-duration: 25s;
     animation-direction: normal;
 }
 
 .orbit-2 {
-    width: 600px;
-    height: 340px;
-    animation-duration: 30s;
+    width: 650px;
+    height: 380px;
+    animation-duration: 35s;
     animation-direction: reverse;
 }
 
 .orbit-3 {
-    width: 740px;
-    height: 420px;
-    animation-duration: 40s;
+    width: 800px;
+    height: 460px;
+    animation-duration: 45s;
     animation-direction: normal;
 }
 
 /* Animación al pasar el mouse por encima */
 .tech-icon:hover {
-    transform: scale(1.3);
+    transform: scale(1.4);
     background-color: var(--primary);
-    z-index: 10;
-    box-shadow: 0 0 20px var(--primary);
+    z-index: 20;
+    box-shadow: 0 0 30px var(--primary);
 }
 
 /* Tooltip para mostrar el nombre de la tecnología */
@@ -103,10 +104,10 @@
     position: absolute;
     background-color: var(--dark-light);
     color: var(--text);
-    font-size: 12px;
-    padding: 5px 10px;
+    font-size: 14px;
+    padding: 6px 12px;
     border-radius: 5px;
-    bottom: -35px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
@@ -123,7 +124,7 @@
 /* Optimizaciones para móviles */
 @media (max-width: 768px) {
     .orbit-container {
-        display: none !important; /* Usar !important para forzar la ocultación */
+        display: none !important;
     }
     
     .orbit, .tech-icon {
@@ -131,57 +132,44 @@
     }
 }
 
-/* Versión móvil alternativa - burbujas flotantes */
-.floating-tech-container {
-    display: none; /* Oculto por defecto, visible solo en móviles */
+/* Ajustes para pantallas medianas */
+@media (max-width: 1200px) {
+    .tech-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .tech-icon i {
+        font-size: 28px;
+    }
+    
+    .orbit-1 {
+        width: 450px;
+        height: 280px;
+    }
+    
+    .orbit-2 {
+        width: 580px;
+        height: 340px;
+    }
+    
+    .orbit-3 {
+        width: 700px;
+        height: 400px;
+    }
 }
 
-@media (max-width: 768px) {
-    .floating-tech-container {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-        z-index: -1;
-        pointer-events: none;
+/* Ajustes para pantallas de baja altura */
+@media (max-height: 800px) {
+    .orbit-1 {
+        animation-duration: 20s;
     }
     
-    .floating-tech {
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: var(--dark-light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 10px rgba(56, 182, 255, 0.3);
-        animation: float-around 10s infinite linear;
+    .orbit-2 {
+        animation-duration: 30s;
     }
     
-    .floating-tech i {
-        font-size: 20px;
-        color: var(--primary);
-    }
-    
-    @keyframes float-around {
-        0% {
-            transform: translate(0, 0);
-        }
-        25% {
-            transform: translate(50px, 20px);
-        }
-        50% {
-            transform: translate(0, 50px);
-        }
-        75% {
-            transform: translate(-50px, 20px);
-        }
-        100% {
-            transform: translate(0, 0);
-        }
+    .orbit-3 {
+        animation-duration: 40s;
     }
 }
