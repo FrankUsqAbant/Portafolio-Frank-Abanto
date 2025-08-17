@@ -1,0 +1,170 @@
+.light-mode {
+    --primary: #1a97e0; /* Slightly darker primary for contrast on light background */
+    --primary-dark: #38b6ff; /* Lighter primary for hover effects */
+    --dark: #f0f2f5; /* Light background */
+    --dark-light: #ffffff; /* Lighter background for cards/sections */
+    --text: #333333; /* Dark text */
+    --text-secondary: rgba(51, 51, 51, 0.7); /* Darker secondary text */
+}
+
+/* Ajustes específicos para elementos en modo claro */
+.light-mode header {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .logo, .light-mode .nav-links a, .light-mode .social-links a {
+    color: var(--text);
+}
+
+.light-mode .hero-title span {
+    color: var(--primary);
+}
+
+.light-mode .profile-img {
+    border-color: var(--primary);
+    box-shadow: 0 0 30px rgba(56, 182, 255, 0.2);
+}
+
+.light-mode .btn {
+    box-shadow: 0 5px 15px rgba(56, 182, 255, 0.2);
+}
+
+.light-mode .btn:hover {
+    box-shadow: 0 8px 20px rgba(56, 182, 255, 0.3);
+}
+
+.light-mode .social-icon {
+    background-color: var(--dark-light);
+    color: var(--text);
+}
+
+.light-mode .social-icon:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.light-mode .section-title::after {
+    background-color: var(--primary);
+}
+
+.light-mode .about-card, .light-mode .skills-section, .light-mode .project-card, .light-mode .contact-form {
+    background-color: var(--dark-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .about-card::before {
+    background: linear-gradient(135deg, transparent 0%, rgba(56, 182, 255, 0.02) 100%);
+}
+
+.light-mode .about-header i {
+    background: rgba(56, 182, 255, 0.1);
+    box-shadow: 0 0 15px rgba(56, 182, 255, 0.1);
+}
+
+.light-mode .skill-card {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .skill-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 15px rgba(56, 182, 255, 0.1);
+}
+
+.light-mode .skill-icon {
+    text-shadow: 0 0 10px rgba(56, 182, 255, 0.2);
+}
+
+.light-mode .project-tech {
+    color: var(--primary);
+}
+
+.light-mode .form-input {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text);
+}
+
+.light-mode .form-input::placeholder {
+    color: rgba(51, 51, 51, 0.5);
+}
+
+.light-mode .form-input:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.light-mode footer {
+    background-color: var(--dark-light);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .footer-links a, .light-mode .copyright {
+    color: var(--text-secondary);
+}
+
+.light-mode .footer-links a:hover {
+    color: var(--primary);
+}
+
+.light-mode .form-success-message {
+    background-color: rgba(56, 182, 255, 0.05);
+    border: 1px solid rgba(56, 182, 255, 0.1);
+}
+
+.light-mode .success-icon {
+    color: var(--primary);
+}
+
+.light-mode .particles .particle {
+    background-color: rgba(56, 182, 255, 0.1);
+}
+
+.light-mode .mouse-trail {
+    background-color: rgba(56, 182, 255, 0.3);
+    box-shadow: 0 0 8px rgba(56, 182, 255, 0.4);
+}
+
+.light-mode .orbit {
+    border-color: rgba(56, 182, 255, 0.15);
+}
+
+.light-mode .tech-icon {
+    background-color: var(--dark-light);
+    box-shadow: 0 0 20px rgba(56, 182, 255, 0.3);
+}
+
+.light-mode .tech-icon img, .light-mode .tech-icon i {
+    filter: drop-shadow(0 0 5px rgba(56, 182, 255, 0.4));
+}
+
+.light-mode .tech-icon:hover {
+    background-color: var(--primary);
+    box-shadow: 0 0 30px rgba(56, 182, 255, 0.4);
+}
+
+.light-mode .tech-tooltip {
+    background-color: var(--dark-light);
+    color: var(--text);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* =================================================================== */
+/* FIX: Theme & Language Toggle Icon Color and Visibility in Light Mode
+/* =================================================================== */
+/*
+  This rule ensures that the theme and language toggle icons are visible
+  and correctly displayed when the light mode is active. It directly
+  targets the icon elements, sets their color, and forces the correct
+  icon to be displayed, overriding any other conflicting styles.
+*/
+.light-mode .theme-toggle .fa-sun {
+    display: none !important;
+}
+
+.light-mode .theme-toggle .fa-moon {
+    display: inline-block !important;
+    color: #333333 !important;
+}
+
+.light-mode .lang-toggle .btn-icon {
+    color: #333333 !important;
+}

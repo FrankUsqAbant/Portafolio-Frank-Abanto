@@ -1,3 +1,16 @@
+// Throttle function to limit how often a function can be called.
+function throttle(fn, delay) {
+    let lastCall = 0;
+    return function(...args) {
+        const now = new Date().getTime();
+        if (now - lastCall < delay) {
+            return;
+        }
+        lastCall = now;
+        return fn(...args);
+    };
+}
+
 // Sistema de órbitas tecnológicas mejorado
 document.addEventListener('DOMContentLoaded', function() {
     // Detección de dispositivos móviles
@@ -51,7 +64,7 @@ function setupOrbitSystem() {
         { name: 'Angular', icon: 'fab fa-angular', color: '#DD0031' },
         { name: 'Git', icon: 'fab fa-git-alt', color: '#F05032' },
         { name: 'Java', icon: 'fab fa-java', color: '#007396' },
-        { name: 'CodeIgniter', type: 'img', src: 'assets/codeneiter.png' }
+        { name: 'React', icon: 'fab fa-react', color: '#61DAFB' }
     ];
     
     // Crear las órbitas
@@ -134,8 +147,8 @@ function setupOrbitSystem() {
     }
 }
 
-// Manejar cambios de tamaño de ventana
-window.addEventListener('resize', function() {
+// Manejar cambios de tamaño de ventana (con throttling)
+window.addEventListener('resize', throttle(function() {
     // Verificar si ahora estamos en móvil o desktop
     const isMobileWidth = window.innerWidth <= 768;
     
@@ -151,4 +164,4 @@ window.addEventListener('resize', function() {
         console.log("Cambiado a desktop - Creando sistema orbital");
         setupOrbitSystem();
     }
-});
+}, 200)); // Throttle with a 200ms delay
